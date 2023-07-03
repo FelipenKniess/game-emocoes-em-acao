@@ -20,6 +20,7 @@ import { useHistory } from "react-router-dom";
 function SorteioCores() {
   const [mustSpin, setMustSpin] = useState(false);
   const [prizeNumber, setPrizeNumber] = useState(0);
+  const [colorNumber, setColorNumber] = useState(0);
   const { infoGame, colorsGame, jogadoresNoJogo, cardsGame, setColorsGame } =
     useGameData();
   const history = useHistory();
@@ -66,12 +67,17 @@ function SorteioCores() {
       const optionsColors = colorsGame.map((color) => Number(color.option));
       const indiceAleatorio = Math.floor(Math.random() * optionsColors.length);
       const numeroAleatorio = optionsColors[indiceAleatorio];
-      setPrizeNumber(numeroAleatorio);
+      const findIndexColor = optionsColors.findIndex(
+        (color) => color === numeroAleatorio
+      );
+      setPrizeNumber(findIndexColor);
+      setColorNumber(numeroAleatorio);
 
       if (optionsColors.length === 1) {
-        history.push(`/selecao-cartas/${optionsColors[0]}`);
+        history.push(`/selecao-cartas/${numeroAleatorio}`);
         return;
       }
+
       setMustSpin(true);
     }
   }
@@ -79,7 +85,7 @@ function SorteioCores() {
   function onStopRoulette() {
     setMustSpin(false);
     setTimeout(() => {
-      history.push(`/selecao-cartas/${prizeNumber}`);
+      history.push(`/selecao-cartas/${colorNumber}`);
     }, 2000);
   }
 

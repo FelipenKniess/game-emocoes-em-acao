@@ -131,9 +131,9 @@ export const GameProvider = ({ children }: GameProviderProps) => {
   function atualizarJogadorAtual() {
     if (!infoGame) return;
 
-    const findNextPlayer = jogadoresNoJogo.find(
-      (item) => item.id === infoGame.idJogadorAtual + 1
-    );
+    const findNextPlayer = jogadoresNoJogo
+      .sort((a, b) => a.id - b.id)
+      .find((item) => item.id === infoGame.idJogadorAtual + 1);
 
     if (findNextPlayer) {
       setInfoGame({

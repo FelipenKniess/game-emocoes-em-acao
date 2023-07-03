@@ -132,7 +132,11 @@ function SorteioCores() {
             onStopSpinning={onStopRoulette}
             spinDuration={0.4}
           />
-          <Button colorScheme="green" onClick={handleSpinClick}>
+          <Button
+            colorScheme="green"
+            isDisabled={mustSpin}
+            onClick={handleSpinClick}
+          >
             GIRAR ROLETA
           </Button>
         </>

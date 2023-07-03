@@ -1,3 +1,10 @@
 .chakra-modal__close-btn {
   display: none !important;
 }
+
+.container-selecionarCartas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}

@@ -36,10 +36,11 @@ function SorteioCores() {
 
   function verificaVencedor() {
     const existCardAvailable = cardsGame?.find((card) => !card.isSelected);
-    if (!existCardAvailable) {
+    if (!existCardAvailable && jogadoresNoJogo.length) {
       const jogadores = jogadoresNoJogo.sort(
         (a, b) => b.pontuacaoAtual - a.pontuacaoAtual
       );
+      history.push("/");
       alert(`O vencedor do jogo é: ${jogadores[0].nome}`);
     }
   }
@@ -62,9 +63,15 @@ function SorteioCores() {
 
   function handleSpinClick() {
     if (!mustSpin && colorsGame) {
-      //TODO: gerar número aleatório de forma diferente, pois dessa foram não remove as cores corretamente
-      const newPrizeNumber = Math.floor(Math.random() * colorsGame.length);
+      const optionsColors = colorsGame.map((color) => Number(color.option));
+      const indiceAleatorio = Math.floor(Math.random() * optionsColors.length);
+      const newPrizeNumber = optionsColors[indiceAleatorio];
       setPrizeNumber(newPrizeNumber);
+
+      if (optionsColors.length === 1) {
+        history.push(`/selecao-cartas/${newPrizeNumber}`);
+        return;
+      }
       setMustSpin(true);
     }
   }
@@ -76,8 +83,15 @@ function SorteioCores() {
     }, 2000);
   }
 
+  function handleResetGame() {
+    history.push("/");
+  }
+
   return (
     <Container className="container-sorteio" gap={4} centerContent>
+      <Button colorScheme="red" onClick={handleResetGame}>
+        Resetar jogo
+      </Button>
       <TableContainer>
         <Table size="sm">
           <Thead>
@@ -91,7 +105,7 @@ function SorteioCores() {
             {jogadoresNoJogo
               .sort((a, b) => b.pontuacaoAtual - a.pontuacaoAtual)
               .map((jogador, index) => (
-                <Tr>
+                <Tr key={jogador.id}>
                   <Td>{index + 1}°</Td>
                   <Td>{jogador.nome}</Td>
                   <Td isNumeric>{jogador.pontuacaoAtual}</Td>

@@ -10,10 +10,11 @@ import {
   Input,
   Button,
   Image,
+  Select,
 } from "@chakra-ui/react";
 
 import "./styles.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useGameData, Jogador } from "../../hooks/gameData";
 import { useHistory } from "react-router-dom";
 import logo from "../../assets/logo.png";
@@ -30,8 +31,15 @@ function Home() {
     },
   ]);
 
+  const [dificuldade, setDificuldade] = useState<number | undefined>();
+
   const history = useHistory();
-  const { comecarJogo } = useGameData();
+  const { comecarJogo, limparDados } = useGameData();
+
+  useEffect(() => {
+    limparDados();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   function addNovoJogador(qtdJogadores: string) {
     const jogadoresAdd = [];
@@ -55,7 +63,13 @@ function Home() {
       };
     });
 
-    comecarJogo(newJogadores);
+    const temJogadoresSemNome = newJogadores.find((jogador) => !jogador.nome);
+
+    if (!dificuldade || temJogadoresSemNome) {
+      return;
+    }
+
+    comecarJogo(newJogadores, dificuldade);
     history.push("/sorteio-cores");
   }
 
@@ -73,6 +87,11 @@ function Home() {
     setJogadores(jogadoresAtualizados);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function handleChangeMode(event: any) {
+    setDificuldade(event.target.value);
+  }
+
   return (
     <>
       <Container centerContent marginTop={15}>
@@ -80,16 +99,26 @@ function Home() {
       </Container>
       <Container className="container-home" gap={4} centerContent>
         <Box>
-          <Text textAlign="center" fontSize={14}>
+          <Text textAlign="center" marginTop={15} fontSize={14}>
+            DIFICULDADE
+          </Text>
+          <Select
+            placeholder="Selecione a dificuldade"
+            onChange={handleChangeMode}
+          >
+            <option value="1">Fácil</option>
+            <option value="2">Médio</option>
+          </Select>
+          <Text textAlign="center" marginTop={15} fontSize={14}>
             QUANTIDADE DE JOGADORES
           </Text>
           <NumberInput
             defaultValue={jogadores.length}
-            min={1}
+            min={2}
             max={4}
             onChange={addNovoJogador}
           >
-            <NumberInputField />
+            <NumberInputField disabled />
             <NumberInputStepper>
               <NumberIncrementStepper />
               <NumberDecrementStepper />

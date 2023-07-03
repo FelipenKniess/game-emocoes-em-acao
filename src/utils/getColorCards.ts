@@ -1,6 +1,27 @@
 import { WheelData } from "react-custom-roulette/dist/components/Wheel/types";
 
-export default function getColorsCards(): WheelData[] {
+export function getColorsCardsEasy(): WheelData[] {
+  return [
+    {
+      option: "0",
+      style: { backgroundColor: "#FEB125", textColor: "#FEB125" },
+    },
+    {
+      option: "1",
+      style: { backgroundColor: "#004AAD", textColor: "#004AAD" },
+    },
+    {
+      option: "2",
+      style: { backgroundColor: "#ED443B", textColor: "#ED443B" },
+    },
+    {
+      option: "3",
+      style: { backgroundColor: "#727CD1", textColor: "#727CD1" },
+    },
+  ];
+}
+
+export function getColorsCardsMedium(): WheelData[] {
   return [
     {
       option: "0",

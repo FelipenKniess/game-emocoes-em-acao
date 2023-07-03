@@ -1,6 +1,9 @@
-import { createContext, useContext, useState, useEffect } from "react";
-import getDataCards from "../utils/getDataCards";
-import getColorsCards from "../utils/getColorCards";
+import { createContext, useContext, useState } from "react";
+import { getDataCardsEasy, getDataCardsMedium } from "../utils/getDataCards";
+import {
+  getColorsCardsMedium,
+  getColorsCardsEasy,
+} from "../utils/getColorCards";
 import { WheelData } from "react-custom-roulette/dist/components/Wheel/types";
 
 export interface Jogador {
@@ -19,12 +22,13 @@ interface GameContextData {
   cardsGame?: CardsGame[];
   infoGame?: InfoGame;
   colorsGame?: WheelData[];
-  comecarJogo: (Jogadores: Jogador[]) => void;
+  comecarJogo: (Jogadores: Jogador[], dificuldade: number) => void;
   setInfoGame: (infoGame: InfoGame) => void;
   atualizarPontosJogador: (idJogador: number) => void;
   atualizarJogadorAtual: () => void;
   removerCarta: (idCarta: number) => void;
   setColorsGame: (colors: WheelData[]) => void;
+  limparDados: () => void;
 }
 
 export interface CardsGame {
@@ -47,56 +51,28 @@ export const GameProvider = ({ children }: GameProviderProps) => {
   const [cardsGame, setCardsGame] = useState<CardsGame[]>();
   const [colorsGame, setColorsGame] = useState<WheelData[]>();
 
-  useEffect(() => {
-    setCardsGame(getDataCards());
-    setColorsGame(getColorsCards());
-
-    // setCardsGame([
-    //   {
-    //     id: 1,
-    //     phrase: "QUAL O MOMENTO MAIS ALEGRE DA SUA VIDA?",
-    //     points: 22,
-    //     idColor: 0,
-    //     isSelected: false,
-    //   },
-    //   {
-    //     id: 7,
-    //     phrase: "QUAL O MOMENTO MAIS TRISTE DA SUA VIDA?",
-    //     points: 22,
-    //     idColor: 1,
-    //     isSelected: false,
-    //   },
-    //   {
-    //     id: 16,
-    //     phrase: "QUAL O MOMENTO DA SUA VIDA EM QUE VOCÊ MAIS SENTIU RAIVA?",
-    //     points: 22,
-    //     idColor: 2,
-    //     isSelected: false,
-    //   },
-    // ]);
-
-    // setColorsGame([
-    //   {
-    //     option: "0",
-    //     style: { backgroundColor: "#FEB125", textColor: "#FEB125" },
-    //   },
-    //   {
-    //     option: "1",
-    //     style: { backgroundColor: "#004AAD", textColor: "#004AAD" },
-    //   },
-    //   {
-    //     option: "2",
-    //     style: { backgroundColor: "#ED443B", textColor: "#ED443B" },
-    //   },
-    // ]);
-  }, []);
-
-  function comecarJogo(jogadores: Jogador[]) {
+  function comecarJogo(jogadores: Jogador[], dificuldade: number) {
     setJogadoresNoJogo(jogadores);
+
+    if (Number(dificuldade) === 1) {
+      setCardsGame(getDataCardsEasy());
+      setColorsGame(getColorsCardsEasy());
+    } else {
+      setCardsGame(getDataCardsMedium());
+      setColorsGame(getColorsCardsMedium());
+    }
+
     setInfoGame({
       idJogadorAtual: jogadores[0].id,
       nomeJogadorAtual: jogadores[0].nome,
     });
+  }
+
+  function limparDados() {
+    setJogadoresNoJogo([]);
+    setInfoGame(undefined);
+    setCardsGame([]);
+    setColorsGame([]);
   }
 
   function atualizarPontosJogador(idJogador: number) {
@@ -160,6 +136,7 @@ export const GameProvider = ({ children }: GameProviderProps) => {
         atualizarJogadorAtual,
         removerCarta,
         setColorsGame,
+        limparDados,
       }}
     >
       {children}

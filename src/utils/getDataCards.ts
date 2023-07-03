@@ -1,4 +1,213 @@
-export default function getDataCards() {
+export function getDataCardsEasy() {
+  return [
+    // Amarelo
+
+    {
+      id: 1,
+      phrase: "QUAL O MOMENTO MAIS ALEGRE DA SUA VIDA?",
+      points: 22,
+      idColor: 0,
+      isSelected: false,
+    },
+    {
+      id: 2,
+      phrase: "ADULTO SENTE ALEGRIA?",
+      points: 22,
+      idColor: 0,
+      isSelected: false,
+    },
+    {
+      id: 3,
+      phrase: "COMO VOCÊ SABE QUE ALGUÉM ESTÁ ALEGRE?",
+      points: 22,
+      idColor: 0,
+      isSelected: false,
+    },
+    {
+      id: 4,
+      phrase: "VOCÊ JÁ VIU ALGUÉM ALEGRE?",
+      points: 22,
+      idColor: 0,
+      isSelected: false,
+    },
+    {
+      id: 5,
+      phrase: "COMO VOCÊ SABE QUE VOCÊ ESTÁ ALEGRE?",
+      points: 22,
+      idColor: 0,
+      isSelected: false,
+    },
+    {
+      id: 6,
+      phrase: "O QUE TE DEIXA ALEGRE?",
+      points: 22,
+      idColor: 0,
+      isSelected: false,
+    },
+
+    //AZUL
+    {
+      id: 7,
+      phrase: "QUAL O MOMENTO MAIS TRISTE DA SUA VIDA?",
+      points: 22,
+      idColor: 1,
+      isSelected: false,
+    },
+    {
+      id: 8,
+      phrase: "ADULTOS SENTE TRISTEZA?",
+      points: 22,
+      idColor: 1,
+      isSelected: false,
+    },
+    {
+      id: 9,
+      phrase: "COMO VOCÊ SABE QUE ALGUÉM ESTÁ  TRISTE?",
+      points: 22,
+      idColor: 1,
+      isSelected: false,
+    },
+    {
+      id: 10,
+      phrase: "VOCÊ JÁ VIU ALGUÉM TRISTE?",
+      points: 22,
+      idColor: 1,
+      isSelected: false,
+    },
+    {
+      id: 11,
+      phrase: "COMO VOCÊ SABE QUE VOCÊ ESTÁ TRISTE?",
+      points: 22,
+      idColor: 1,
+      isSelected: false,
+    },
+    {
+      id: 12,
+      phrase: "O QUE VOCÊ FAZ QUANDO ESTÁ TRISTE?",
+      points: 22,
+      idColor: 1,
+      isSelected: false,
+    },
+    {
+      id: 13,
+      phrase: "O QUE TE DEIXA TRISTE?",
+      points: 22,
+      idColor: 1,
+      isSelected: false,
+    },
+    {
+      id: 14,
+      phrase: "O QUE FAZ VOCÊ SE SENTIR MELHOR QUANDO ESTÁ TRISTE?",
+      points: 22,
+      idColor: 1,
+      isSelected: false,
+    },
+    {
+      id: 15,
+      phrase: "COMO AJUDAR ALGUÉM QUE ESTÁ TRISTE?",
+      points: 22,
+      idColor: 1,
+      isSelected: false,
+    },
+
+    //VERMELHO
+    {
+      id: 16,
+      phrase: "QUAL O MOMENTO DA SUA VIDA EM QUE VOCÊ MAIS SENTIU RAIVA?",
+      points: 22,
+      idColor: 2,
+      isSelected: false,
+    },
+    {
+      id: 17,
+      phrase: "ADULTO SENTE RAIVA?",
+      points: 22,
+      idColor: 2,
+      isSelected: false,
+    },
+    {
+      id: 18,
+      phrase: "COMO VOCÊ SABE QUE ALGUÉM ESTÁ COM RAIVA?",
+      points: 22,
+      idColor: 2,
+      isSelected: false,
+    },
+    {
+      id: 19,
+      phrase: "VOCÊ JÁ VIU ALGUÉM COM RAIVA?",
+      points: 22,
+      idColor: 2,
+      isSelected: false,
+    },
+    {
+      id: 20,
+      phrase: "COMO VOCÊ SABE QUE VOCÊ ESTÁ COM RAIVA?",
+      points: 22,
+      idColor: 2,
+      isSelected: false,
+    },
+    {
+      id: 21,
+      phrase: "O QUE TE DEIXA COM RAIVA?",
+      points: 22,
+      idColor: 2,
+      isSelected: false,
+    },
+    {
+      id: 22,
+      phrase: "O QUE FAZ VOCÊ SE SENTIR MELHOR QUANDO VOCÊ ESTÁ COM RAIVA?",
+      points: 22,
+      idColor: 2,
+      isSelected: false,
+    },
+    {
+      id: 23,
+      phrase: "COMO AJUDAR ALGUÉM QUE ESTÁ COM RAIVA?",
+      points: 22,
+      idColor: 2,
+      isSelected: false,
+    },
+
+    //ROXO
+    {
+      id: 24,
+      phrase: "QUAL O MOMENTO DA SUA VIDA EM QUE VOCÊ MAIS SENTIU MEDO?",
+      points: 22,
+      idColor: 3,
+      isSelected: false,
+    },
+    {
+      id: 25,
+      phrase: "ADULTO SENTE MEDO?",
+      points: 22,
+      idColor: 3,
+      isSelected: false,
+    },
+    {
+      id: 26,
+      phrase: "O QUE TE DEIXA COM MEDO?",
+      points: 22,
+      idColor: 3,
+      isSelected: false,
+    },
+    {
+      id: 27,
+      phrase: "O QUE FAZ VOCÊ SE SENTIR MELHOR QUANDO ESTÁ COM MEDO?",
+      points: 22,
+      idColor: 3,
+      isSelected: false,
+    },
+    {
+      id: 28,
+      phrase: "COMO AJUDAR ALGUÉM QUE ESTÁ COM MEDO?",
+      points: 22,
+      idColor: 3,
+      isSelected: false,
+    },
+  ];
+}
+
+export function getDataCardsMedium() {
   return [
     // Amarelo
 

@@ -1,7 +1,5 @@
 import {
   Card,
-  Container,
-  Grid,
   Text,
   useDisclosure,
   Modal,
@@ -12,6 +10,7 @@ import {
   ModalBody,
   ModalFooter,
   Button,
+  Flex,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import "./styles.scss";
@@ -78,23 +77,24 @@ function SelecionarCartas() {
 
   return (
     <>
-      <Container className="container-selecionarCartas" gap={4} centerContent>
-        <Text fontSize={25} marginTop={10}>
+      <div className="container-selecionarCartas">
+        <Text fontSize={25} marginTop={10} textAlign="center">
           Selecione uma carta jogador:{" "}
           <strong>{infoGame?.nomeJogadorAtual}</strong>
         </Text>
-        <Grid templateColumns="repeat(8, 1fr)" margin={50} gap={6}>
+        <Flex margin={50} gap={6} flexWrap="wrap" justifyContent="center">
           {cardsCurrentColor?.map((card) => (
             <Card
               className="card"
               background={colorSelected?.style?.backgroundColor}
               cursor="pointer"
+              key={card.id}
               width={150}
               height={180}
               onClick={() => handleSelectCard(card)}
             ></Card>
           ))}
-        </Grid>
+        </Flex>
 
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
@@ -127,7 +127,7 @@ function SelecionarCartas() {
             </ModalFooter>
           </ModalContent>
         </Modal>
-      </Container>
+      </div>
     </>
   );
 }

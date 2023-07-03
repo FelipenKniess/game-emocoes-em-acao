@@ -110,6 +110,7 @@ function SorteioCores() {
             prizeNumber={prizeNumber}
             data={colorsGame}
             onStopSpinning={onStopRoulette}
+            spinDuration={0.4}
           />
           <Button colorScheme="green" onClick={handleSpinClick}>
             GIRAR ROLETA

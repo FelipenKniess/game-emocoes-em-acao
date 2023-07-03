@@ -41,8 +41,13 @@ function SorteioCores() {
       const jogadores = jogadoresNoJogo.sort(
         (a, b) => b.pontuacaoAtual - a.pontuacaoAtual
       );
+
       history.push("/");
-      alert(`O vencedor do jogo é: ${jogadores[0].nome}`);
+      if (jogadores[0].pontuacaoAtual === jogadores[1].pontuacaoAtual) {
+        alert("O jogo terminou empatado!");
+      } else {
+        alert(`O vencedor do jogo é ${jogadores[0].nome}`);
+      }
     }
   }
 

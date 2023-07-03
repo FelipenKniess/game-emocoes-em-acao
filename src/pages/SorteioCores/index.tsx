@@ -65,11 +65,11 @@ function SorteioCores() {
     if (!mustSpin && colorsGame) {
       const optionsColors = colorsGame.map((color) => Number(color.option));
       const indiceAleatorio = Math.floor(Math.random() * optionsColors.length);
-      const newPrizeNumber = optionsColors[indiceAleatorio];
-      setPrizeNumber(newPrizeNumber);
+      const numeroAleatorio = optionsColors[indiceAleatorio];
+      setPrizeNumber(numeroAleatorio);
 
       if (optionsColors.length === 1) {
-        history.push(`/selecao-cartas/${newPrizeNumber}`);
+        history.push(`/selecao-cartas/${optionsColors[0]}`);
         return;
       }
       setMustSpin(true);

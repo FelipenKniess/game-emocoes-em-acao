@@ -62,6 +62,45 @@ export const GameProvider = ({ children }: GameProviderProps) => {
       setColorsGame(getColorsCardsMedium());
     }
 
+    // setColorsGame([
+    //   {
+    //     option: "0",
+    //     style: { backgroundColor: "#FEB125", textColor: "#FEB125" },
+    //   },
+    //   {
+    //     option: "1",
+    //     style: { backgroundColor: "#004AAD", textColor: "#004AAD" },
+    //   },
+    //   {
+    //     option: "2",
+    //     style: { backgroundColor: "#ED443B", textColor: "#ED443B" },
+    //   },
+    // ]);
+
+    // setCardsGame([
+    //   {
+    //     id: 1,
+    //     phrase: "QUAL O MOMENTO MAIS ALEGRE DA SUA VIDA?",
+    //     points: 22,
+    //     idColor: 0,
+    //     isSelected: false,
+    //   },
+    //   {
+    //     id: 7,
+    //     phrase: "QUAL O MOMENTO MAIS TRISTE DA SUA VIDA?",
+    //     points: 22,
+    //     idColor: 1,
+    //     isSelected: false,
+    //   },
+    //   {
+    //     id: 16,
+    //     phrase: "QUAL O MOMENTO DA SUA VIDA EM QUE VOCÊ MAIS SENTIU RAIVA?",
+    //     points: 22,
+    //     idColor: 2,
+    //     isSelected: false,
+    //   },
+    // ]);
+
     setInfoGame({
       idJogadorAtual: jogadores[0].id,
       nomeJogadorAtual: jogadores[0].nome,
